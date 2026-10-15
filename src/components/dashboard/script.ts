@@ -1,7 +1,7 @@
-import { Logger } from "lib/services/logger";
-import { Translations, Translator } from "lib/services/translator";
-import { State } from "lib/services/state";
-import resetStyles from 'lib/styles/reset.css?inline';
+import { Logger } from "library/lib/services/logger";
+import { Translations, Translator } from "library/lib-fe/services/translator";
+import { State } from "library/lib-fe/services/state";
+import mainStyles from '../../styles/style.css?inline';
 import componentStyles from './styles.css?inline';
 import templateHtml from './doc.html?raw';
 
@@ -10,7 +10,7 @@ const componentName: string = "si-dashboard";
 
 template.innerHTML = /*html*/`
 <style>
-  ${resetStyles}
+  ${mainStyles}
   ${componentStyles}
 </style>
 

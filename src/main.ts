@@ -6,6 +6,7 @@ import { domainRoot } from './data/config';
 import { aliases, routes } from './data/routes';
 // components
 import 'library/lib-fe/components/404/script';
+import './components/dashboard/script';
 import './components/footer/script';
 import './components/header/script';
 // services

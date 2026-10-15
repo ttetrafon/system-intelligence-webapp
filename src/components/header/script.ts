@@ -1,7 +1,7 @@
 import { Logger } from "library/lib/services/logger";
 import { Translations, Translator } from "library/lib-fe/services/translator";
 import { State } from "library/lib-fe/services/state";
-import resetStyles from 'library/lib-fe/styles/reset.css?inline';
+import mainStyles from '../../styles/style.css?inline';
 import componentStyles from './styles.css?inline';
 import templateHtml from './doc.html?raw';
 
@@ -10,7 +10,7 @@ const componentName: string = "si-header";
 
 template.innerHTML = /*html*/`
 <style>
-  ${resetStyles}
+  ${mainStyles}
   ${componentStyles}
 </style>
 

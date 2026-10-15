@@ -6,26 +6,33 @@
   --spacing-wide: calc(var(--spacing-normal) * 2.5);
   --spacing-narrow: calc(var(--spacing-normal) / 2);
 
-  --border-thin: 0.5px;
-  --border-normal: 1px;
-  --border-thick: 2px;
+  --border-thin: var(--colour-action) solid0.5px;
+  --border-normal: var(--colour-action) solid 1px;
+  --border-thick: var(--colour-action) solid2px;
 
   --colour-typography: #F5DAA7;
   --colour-action: #A3485A;
   --colour-basis: #842A3B;
   --colour-background: #662222;
 
-  --font-sans: system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Open Sans',
-    'Helvetica Neue',
-    sans-serif;
+  --font-main: Superclarendon,
+    'Bookman Old Style',
+    'URW Bookman',
+    'URW Bookman L',
+    'Georgia Pro',
+    Georgia,
+    serif;
+  --font-secondary: 'Iowan Old Style',
+    'Palatino Linotype',
+    'URW Palladio L',
+    P052,
+    serif;
+  --font-decor: 'Segoe Print',
+    'Bradley Hand',
+    Chilanka,
+    TSCu_Comic,
+    casual,
+    cursive;
 }
 
 .app-loading {
@@ -39,10 +46,12 @@ body:not(.app-loading) {
 
 html {
   height: 100%;
+  font-weight: normal;
 }
 
 body {
-  font-family: var(--font-sans);
+  position: relative;
+  font-family: var(--font-main);
   height: 100dvh;
   background-color: var(--colour-background);
   color: var(--colour-typography);
@@ -55,27 +64,91 @@ body {
 }
 
 main {
-  /* flex: 1 1 auto; */
   min-height: 0;
-  overflow: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--spacing-narrow);
 }
 
 header,
 footer {
   width: 100%;
   flex: 0 0 auto;
+  padding: var(--spacing-narrow);
 }
 
 header {
-  border-bottom: var(--colour-action) solid var(--border-normal);
+  border-bottom: var(--border-normal);
   margin-bottom: var(--spacing-narrow);
 }
 
 footer {
-  border-top: var(--colour-action) solid var(--border-normal);
+  border-top: var(--border-normal);
   margin-top: var(--spacing-narrow);
+}
+
+nav,
+section#app {
+  padding: var(--spacing-normal);
+}
+
+nav {
+  flex: 0 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: var(--border-normal);
+}
+
+section#app {
+  flex: 1 1 auto;
+  overflow: auto;
 }
 
 button {
   background-color: var(--colour-action);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-decor);
+}
+
+h1 {
+  font-size: x-large;
+}
+
+h2,
+h3 {
+  font-size: larger;
+}
+
+h4,
+h5,
+h6 {
+  font-size: large;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 450px) {
+  header {
+    padding-left: 50px;
+  }
+
+  main {
+    display: block;
+  }
+
+  nav {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 25;
+  }
 }
