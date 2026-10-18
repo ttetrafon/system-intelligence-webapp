@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  min-height: 20px;
+}
+
+a {
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-items: start;
+  align-items: center;
+  gap: var(--spacing-normal);
+}
+
+img {
+  height: 90%;
+  aspect-ratio: 1;
+}
+
+span {
+  font-family: ver(--font-secondary);
+}

@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+nav {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--spacing-narrow);
+}
+
+h3 {
+  font-family: var(--font-decor);
+  font-size: large;
+  padding: var(--spacing-narrow) var(--spacing-normal);
+}
+
+hr {
+  width: 100%;
+}
+
+si-menu-item {
+  height: 24px;
+}

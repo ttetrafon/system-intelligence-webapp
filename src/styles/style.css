@@ -52,6 +52,7 @@ html {
 body {
   position: relative;
   font-family: var(--font-main);
+  font-size: medium;
   height: 100dvh;
   background-color: var(--colour-background);
   color: var(--colour-typography);
