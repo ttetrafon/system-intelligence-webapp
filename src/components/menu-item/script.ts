@@ -63,6 +63,9 @@ class Component extends HTMLElement {
       case 'link':
         this.setLink();
         break;
+      case 'depth':
+        this.setDepth();
+        break;
       default:
         break;
     }
@@ -73,6 +76,7 @@ class Component extends HTMLElement {
 
     this.a = this.#shadow.querySelector("a");
     this.setLink();
+    this.setDepth();
     this.img = this.#shadow.querySelector("img");
     this.setImg();
     this.text = this.#shadow.querySelector("span");
@@ -83,6 +87,10 @@ class Component extends HTMLElement {
   disconnectedCallback() {
   }
   adoptedCallback() {
+  }
+
+  setDepth() {
+    if (this.a) this.a.style.paddingLeft = `${this.depth * 20}px`;
   }
 
   setImg() {

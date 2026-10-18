@@ -6,6 +6,8 @@
   --spacing-wide: calc(var(--spacing-normal) * 2.5);
   --spacing-narrow: calc(var(--spacing-normal) / 2);
 
+  --size-mobile: 450px;
+
   --border-thin: var(--colour-action) solid0.5px;
   --border-normal: var(--colour-action) solid 1px;
   --border-thick: var(--colour-action) solid2px;
@@ -81,6 +83,10 @@ footer {
 header {
   border-bottom: var(--border-normal);
   margin-bottom: var(--spacing-narrow);
+
+  @media (max-width: 450px) {
+    padding-left: 50px;
+  }
 }
 
 footer {
@@ -91,13 +97,6 @@ footer {
 nav,
 section#app {
   padding: var(--spacing-normal);
-}
-
-nav {
-  flex: 0 0 auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-  border-right: var(--border-normal);
 }
 
 section#app {
@@ -131,25 +130,4 @@ h4,
 h5,
 h6 {
   font-size: large;
-}
-
-/* MOBILE STYLES */
-@media (max-width: 450px) {
-  header {
-    padding-left: 50px;
-  }
-
-  main {
-    display: block;
-  }
-
-  nav {
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 25;
-  }
 }
