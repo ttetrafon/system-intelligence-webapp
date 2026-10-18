@@ -51,13 +51,15 @@ nav {
   overflow-y: auto;
   border-right: var(--border-normal);
   background-color: var(--colour-basis);
-  display: none;
+  display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
   gap: var(--spacing-normal);
+  padding-right: var(--spacing-wide);
 
   @media (max-width: 450px) {
+    display: none;
     padding-left: 32px;
     position: absolute;
     top: 0;
