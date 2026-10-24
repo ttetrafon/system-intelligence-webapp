@@ -22,4 +22,5 @@ img {
 span {
   flex: 0 1 auto;
   font-family: ver(--font-secondary);
+  white-space: nowrap;
 }

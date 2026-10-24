@@ -1,1 +1,1 @@
-export const AppName: string = 'System-Intelligence';
+export const APP_NAME: string = 'System-Intelligence';

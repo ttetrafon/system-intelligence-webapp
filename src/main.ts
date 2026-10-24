@@ -1,7 +1,7 @@
 // styles
 import './styles/style.css';
 // data
-import { AppName } from './util/constants';
+import { APP_NAME } from './util/constants';
 import { domainRoot } from './data/config';
 import { aliases, routes } from './data/routes';
 // components
@@ -21,7 +21,7 @@ logger.setLevel('debug');
 
 document.body.classList.add('app-loading');
 
-State.getInstance(AppName);
+State.getInstance(APP_NAME);
 Navigator.getInstance(domainRoot, '#app', routes, aliases);
 
 setTimeout(() => {
