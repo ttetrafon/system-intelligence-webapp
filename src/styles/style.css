@@ -138,7 +138,14 @@ h6 {
   font-size: large;
 }
 
+input {
+  background-color: var(--colour-action);
+}
+
 hr {
   width: 100%;
   border-top: var(--border-thin);
+  margin-top: var(--spacing-wide);
+  margin-bottom: var(--spacing-wide);
+  margin-right: var(--spacing-wide);
 }

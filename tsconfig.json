@@ -22,7 +22,7 @@
     }
   },
   "include": [
-    "./src/*",
-    "./library/*"
+    "./src/**/*",
+    "./library/**/*"
   ]
 }

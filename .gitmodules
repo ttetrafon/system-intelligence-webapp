@@ -4,3 +4,6 @@
 [submodule "library/lib"]
 	path = library/lib
 	url = git@github.com:ttetrafon/typescript-lib.git
+[submodule "library/shared"]
+	path = library/shared
+	url = git@github.com:ttetrafon/system-intelligence-shared.git
