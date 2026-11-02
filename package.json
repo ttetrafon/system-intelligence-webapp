@@ -1,7 +1,7 @@
 {
   "name": "system-intelligence-webapp",
   "description": "System Intelligence: Webapp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "ttetrafon",
   "private": true,
   "type": "module",
@@ -26,7 +26,7 @@
     "typecheck": "tsc --noEmit && pnpm test",
     "test": "vitest --run",
     "test-watch": "vitest",
-    "build": "vite build",
+    "build": "vite build --mode production",
     "preview": "pnpm run build && vite preview"
   }
 }

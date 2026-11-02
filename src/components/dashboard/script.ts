@@ -7,6 +7,7 @@ import mainStyles from '../../styles/style.css?inline';
 import componentStyles from './styles.css?inline';
 import templateHtml from './doc.html?raw';
 import { OBSERVABLE_USER } from "../../util/constants";
+import { serverRequestUrl } from "../../util/requests";
 
 const template: HTMLTemplateElement = document.createElement('template');
 const componentName: string = "si-dashboard";
@@ -93,7 +94,7 @@ class Component extends HTMLElement {
       password,
     };
 
-    const user: User = await requestPost("/user/sign-in", JSON.stringify(body));
+    const user: User = await requestPost(serverRequestUrl("/user/sign-in"), JSON.stringify(body));
     this.s.updateObservable(OBSERVABLE_USER, user);
     this.swapContainers(true);
   }

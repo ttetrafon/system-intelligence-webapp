@@ -2,7 +2,6 @@
 import './styles/style.css';
 // data
 import { APP_NAME, OBSERVABLE_USER } from './util/constants';
-import { domainRoot } from './data/config';
 import { aliases, routes } from './data/routes';
 // components
 import 'library/lib-fe/components/404/script';
@@ -25,7 +24,7 @@ logger.setLevel('debug');
 document.body.classList.add('app-loading');
 
 const state: State = State.getInstance(APP_NAME);
-Navigator.getInstance(domainRoot, '#app', routes, aliases);
+Navigator.getInstance(import.meta.env.VITE_DOMAIN_ROOT, '#app', routes, aliases);
 
 setTimeout(() => {
   document.body.classList.remove('app-loading');
