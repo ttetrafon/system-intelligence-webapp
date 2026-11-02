@@ -1,7 +1,7 @@
 {
   "name": "system-intelligence-webapp",
   "description": "System Intelligence: Webapp",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "ttetrafon",
   "private": true,
   "type": "module",
@@ -11,12 +11,12 @@
   },
   "license": "GNU-3.0",
   "devDependencies": {
-    "@types/lodash": "4.17.26",
-    "@types/node": "26.6.5",
-    "jsdom": "30.1.2",
+    "@types/lodash": "4.17.27",
+    "@types/node": "26.6.6",
+    "jsdom": "30.1.3",
     "typescript": "7.0.2",
-    "vite": "8.3.4",
-    "vitest": "5.0.4"
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   },
   "dependencies": {
     "lodash": "4.18.1"
