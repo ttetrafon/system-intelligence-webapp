@@ -62,11 +62,11 @@ body {
   display: grid;
   grid-template-rows: minmax(0, 1fr);
 
-  @media (min-width: 450px) {
+  @media (width >=450px) {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  @media (min-width: 450px) {
+  @media (width >=450px) {
     grid-template-columns: auto minmax(0, 1fr);
   }
 }
@@ -89,7 +89,7 @@ header {
   border-bottom: var(--border-normal);
   margin-bottom: var(--spacing-narrow);
 
-  @media (max-width: 450px) {
+  @media (width < 450px) {
     padding-left: 50px;
   }
 }

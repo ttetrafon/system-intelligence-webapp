@@ -1,9 +1,9 @@
 {
   "name": "system-intelligence-webapp",
   "description": "System Intelligence: Webapp",
+  "version": "0.1.2",
   "author": "ttetrafon",
   "private": true,
-  "version": "0.1.1",
   "type": "module",
   "engines": {
     "node": ">=24",

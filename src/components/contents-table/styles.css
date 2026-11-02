@@ -2,7 +2,7 @@
   display: inline-flex;
   height: 100%;
 
-  @media (max-width: 450px) {
+  @media (width < 450px) {
     display: block;
     position: absolute;
     top: 0;
@@ -21,7 +21,7 @@ button {
   border-radius: 4px;
   margin: var(--spacing-narrow);
 
-  @media (min-width: 450px) {
+  @media (width >=450px) {
     display: none;
   }
 
@@ -59,7 +59,7 @@ nav {
   gap: var(--spacing-normal);
   padding-right: var(--spacing-wide);
 
-  @media (max-width: 450px) {
+  @media (width < 450px) {
     display: none;
     padding-left: 32px;
     position: absolute;

@@ -1,4 +1,4 @@
-import { Route } from "library/lib-fe/types";
+import { Route } from "library/lib-fe/types/navigation";
 
 export const routes: Record<string, Route> = {
   'dashboard': {
