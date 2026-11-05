@@ -1,10 +1,10 @@
 {
   "name": "system-intelligence-webapp",
   "description": "System Intelligence: Webapp",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "ttetrafon",
-  "private": true,
   "type": "module",
+  "private": true,
   "engines": {
     "node": ">=24",
     "pnpm": ">=11"
@@ -23,10 +23,11 @@
   },
   "scripts": {
     "dev": "pnpm typecheck && vite",
-    "typecheck": "tsc --noEmit && pnpm test",
-    "test": "vitest --run",
-    "test-watch": "vitest",
-    "build": "vite build --mode production",
-    "preview": "pnpm run build && vite preview"
+    "typecheck": "tsc --noEmit",
+    "test": "pnpm run typecheck && vitest --run",
+    "test-watch": "pnpm run typecheck && vitest",
+    "preview": "vite build && vite preview",
+    "deploy-staging": "vite build --mode staging",
+    "deploy-production": "vite build --mode production"
   }
 }

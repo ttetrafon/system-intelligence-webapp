@@ -1,7 +1,7 @@
 // styles
 import './styles/style.css';
 // data
-import { APP_NAME, OBSERVABLE_USER } from './util/constants';
+import { APP_NAME, OBSERVABLE_ACCESS_TOKEN, OBSERVABLE_USER } from './util/constants';
 import { aliases, routes } from './data/routes';
 // components
 import 'library/lib-fe/components/404/script';
@@ -14,9 +14,10 @@ import './components/menu-item/script';
 import { Logger } from 'library/lib/services/logger';
 import { Navigator } from 'library/lib-fe/services/navigator';
 import { State } from 'library/lib-fe/services/state';
-import { requestGet } from 'library/lib-fe/util/Requests';
-import { User, visitor } from 'library/shared/model/User';
+import { LoginResponse, visitor } from 'library/shared/model/User';
+import { requestPost } from 'library/lib-fe/util/Requests';
 import { serverRequestUrl } from './util/requests';
+import { userRefresh } from 'library/shared/data/endpoints';
 
 const logger: Logger = Logger.getInstance();
 logger.setLevel('debug');
@@ -34,6 +35,12 @@ setTimeout(() => {
 
 // ... initialise user state
 state.createObservable(OBSERVABLE_USER, visitor);
+state.createObservable(OBSERVABLE_ACCESS_TOKEN, {});
 
-// ... send initial request to get user data if there a cookie exists
-// const user = requestGet<User | Error>(serverRequestUrl("/app-started"));
+// ... send initial request to get user data if a cookie exists
+try {
+  const refresh = await requestPost<LoginResponse>(serverRequestUrl(userRefresh), JSON.stringify({}), true);
+  state.updateObservable(OBSERVABLE_USER, refresh.user);
+  state.updateObservable(OBSERVABLE_ACCESS_TOKEN, refresh.token);
+}
+catch (_ignored) { }

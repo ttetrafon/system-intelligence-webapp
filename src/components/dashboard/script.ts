@@ -1,12 +1,15 @@
 import { Logger } from "library/lib/services/logger";
 import { State } from "library/lib-fe/services/state";
 import { Translations, Translator } from "library/lib-fe/services/translator";
-import { requestPost } from "library/lib-fe/util/Requests";
-import { User } from "library/shared/model/User";
+import { request, requestPost } from "library/lib-fe/util/Requests";
+import { userLogin } from "library/shared/data/endpoints";
+import { createDpopProof } from "../../../library/lib-fe/security/dpop";
+import { getDeviceLabel } from "../../../library/lib-fe/util/device";
+import { LoginRequest, LoginResponse, User } from "library/shared/model/User";
 import mainStyles from '../../styles/style.css?inline';
 import componentStyles from './styles.css?inline';
 import templateHtml from './doc.html?raw';
-import { OBSERVABLE_USER } from "../../util/constants";
+import { OBSERVABLE_ACCESS_TOKEN, OBSERVABLE_USER } from "../../util/constants";
 import { serverRequestUrl } from "../../util/requests";
 
 const template: HTMLTemplateElement = document.createElement('template');
@@ -73,6 +76,8 @@ class Component extends HTMLElement {
 
     this.userDataContainer = this.#shadow.querySelector("article#user-data");
 
+    // TODO: watch for changes in the user/accessToken and react accordingly
+
     this.initialised = true;
   }
   disconnectedCallback() {
@@ -89,13 +94,18 @@ class Component extends HTMLElement {
     const password = this.loginPassword?.value;
     if (!username || !password) return;
 
-    const body = {
+    const body: LoginRequest = {
       username,
       password,
+      client: 'web',
+      deviceLabel: await getDeviceLabel(),
     };
 
-    const user: User = await requestPost(serverRequestUrl("/user/sign-in"), JSON.stringify(body));
-    this.s.updateObservable(OBSERVABLE_USER, user);
+    const url = serverRequestUrl(userLogin);
+    const res = await requestPost<LoginResponse>(url, JSON.stringify(body), true);
+
+    this.s.updateObservable(OBSERVABLE_USER, res.user);
+    this.s.updateObservable(OBSERVABLE_ACCESS_TOKEN, res.token);
     this.swapContainers(true);
   }
 
