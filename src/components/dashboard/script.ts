@@ -1,9 +1,8 @@
 import { Logger } from "library/lib/services/logger";
 import { State } from "library/lib-fe/services/state";
 import { Translations, Translator } from "library/lib-fe/services/translator";
-import { request, requestPost } from "library/lib-fe/util/Requests";
+import { requestPost } from "library/lib-fe/util/Requests";
 import { userLogin } from "library/shared/data/endpoints";
-import { createDpopProof } from "../../../library/lib-fe/security/dpop";
 import { getDeviceLabel } from "../../../library/lib-fe/util/device";
 import { LoginRequest, LoginResponse, User } from "library/shared/model/User";
 import mainStyles from '../../styles/style.css?inline';
@@ -77,6 +76,8 @@ class Component extends HTMLElement {
     this.userDataContainer = this.#shadow.querySelector("article#user-data");
 
     // TODO: watch for changes in the user/accessToken and react accordingly
+    this.s.subscribeToObservable(OBSERVABLE_USER, componentName, { OBSERVABLE_USER: this.userListener.bind(this) });
+    this.initialiseData();
 
     this.initialised = true;
   }
@@ -112,6 +113,17 @@ class Component extends HTMLElement {
   swapContainers(loggedIn: boolean) {
     if (this.loginForm) this.loginForm.style.display = loggedIn ? "none" : "flex";
     if (this.userDataContainer) this.userDataContainer.style.display = loggedIn ? "flex" : "none";
+  }
+
+  async initialiseData() {
+    const u = await this.s.getValueFromObservable<User>(OBSERVABLE_USER);
+    if (u) this.userListener(componentName, OBSERVABLE_USER, u);
+  }
+
+  userListener(subscriber: string, watchedPath: string, updatedValue: any) {
+    console.log(`---> userListener(${subscriber}, ${watchedPath}, ${JSON.stringify(updatedValue)})`);
+    const u = updatedValue as User;
+    this.swapContainers(u.id !== 99);
   }
 }
 
